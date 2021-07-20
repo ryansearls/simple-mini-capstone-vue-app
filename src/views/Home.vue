@@ -22,25 +22,26 @@
       <button v-on:click="showProduct(product)">More Info!</button>
     </div>
     <dialog id="product-details">
-      <form method="dialog">
-        <h1>Product Info</h1>
+     <form method="dialog">
+        <h1>Product Info!</h1>
         <p>
-         Name:
-        <input type="text" v-model="currentProduct.name />
+          Name:
+          <input type="text" v-model="currentProduct.name" />
         </p>
         <p>
-        Price: 
-        <input type="text" v-model="currentProduct.price" />
+          Description:
+          <input type="text" v-model="currentProduct.description" />
         </p>
         <p>
-        Description:
-        <input type="text" v-model="currentProduct.description" />
+          Image_url:
+          <input type="text" v-model="currentProduct.image_url" />
         </p>
         <p>
-        Image_url:
-        <input type="text" v-model="currentProduct.image_url" />
+          Price:
+          <input type="text" v-model="currentProduct.price" />
         </p>
-        <button v-on:click="updateProduct(currentProduct)">Update Product</button>
+        <button v-on:click="updateProduct(currentProduct)">Update Product!</button>
+        <button v-on:click="deleteProduct(currentProduct)">Destroy Product!</button>
         <button>Close</button>
       </form>
     </dialog>
@@ -93,8 +94,8 @@ export default {
         console.log("Success!", response.data);
         });
       },
-      destroyProduct: function (product) {
-        axios.delete("http://localhost:3000/products/" + product.id).then((response)) => {
+      deleteProduct: function (product) {
+        axios.delete("http://localhost:3000/products/" + product.id).then((response) => {
           console.log("Success!", response.data);
           var index = this.products.indexOf(response);
           this.products.splice(index, 1);
